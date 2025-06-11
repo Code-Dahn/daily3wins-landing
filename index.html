@@ -287,24 +287,34 @@
       try {
         const res = await fetch('https://buttondown.email/api/emails/embed-subscribe/daily3wins', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: `email=${encodeURIComponent(email)}`
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json'
+          },
+          body: `email=${encodeURIComponent(email)}&referrer_url=${encodeURIComponent(window.location.href)}`
         });
+
+        const data = await res.json();
 
         if (res.ok) {
           document.getElementById('bd-form').style.display = 'none';
           document.getElementById('bd-success').style.display = 'block';
+          confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+          });
         } else {
-          alert("Oops! Something went wrong. Try again.");
-          submitButton.disabled = false;
-          submitButton.value = 'Notify Me';
+          throw new Error(data.error || 'Subscription failed');
         }
       } catch (error) {
-        alert("Oops! Something went wrong. Try again.");
+        console.error('Subscription error:', error);
+        alert("Oops! Something went wrong. Please try again.");
         submitButton.disabled = false;
         submitButton.value = 'Notify Me';
       }
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </body>
 </html> 
