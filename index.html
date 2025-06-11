@@ -261,7 +261,7 @@
       <h2>Join the Waitlist</h2>
       <p>Be the first to know when Daily 3 Wins launches!</p>
       <div id="waitlist">
-        <form id="bd-form" class="embeddable-buttondown-form" onsubmit="return false;">
+        <form action="https://buttondown.email/api/emails/embed-subscribe/daily3wins" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.email/daily3wins', 'popupwindow', 'scrollbars=yes,width=800,height=600'); return true;" class="embeddable-buttondown-form">
           <input type="email" name="email" id="bd-email" placeholder="Enter your email" required>
           <input type="submit" value="Notify Me">
         </form>
@@ -275,49 +275,16 @@
     &copy; 2025 Daily3Wins. All rights reserved.
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script>
-    document.getElementById('bd-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const email = document.getElementById('bd-email').value;
-      const submitButton = this.querySelector('input[type="submit"]');
-      const errorMessage = document.getElementById('bd-error');
-      
-      // Reset error state
-      errorMessage.style.display = 'none';
-      
-      submitButton.disabled = true;
-      submitButton.value = 'Subscribing...';
-
-      try {
-        const formData = new URLSearchParams();
-        formData.append('email', email);
-
-        const response = await fetch('https://buttondown.email/api/emails/embed-subscribe/daily3wins', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: formData
-        });
-
-        if (response.ok) {
-          window.open('https://buttondown.email/daily3wins', 'popupwindow');
-          submitButton.value = 'Subscribed!';
-        } else {
-          const text = await response.text();
-          console.error('Subscription failed:', text);
-          errorMessage.style.display = 'block';
-          submitButton.disabled = false;
-          submitButton.value = 'Notify Me';
-        }
-      } catch (error) {
-        console.error('Subscription error:', error);
-        errorMessage.style.display = 'block';
-        submitButton.disabled = false;
-        submitButton.value = 'Notify Me';
-      }
+    const form = document.querySelector('#waitlist form');
+    form.addEventListener('submit', () => {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
     });
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </body>
-</html> 
+</html>
