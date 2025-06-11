@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daily 3 Wins</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     * {
       box-sizing: border-box;
@@ -23,7 +24,7 @@
       background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
       color: white;
       text-align: center;
-      padding: 6rem 2rem;
+      padding: 8rem 2rem;
       position: relative;
       overflow: hidden;
     }
@@ -41,49 +42,64 @@
 
     header h1 {
       margin: 0;
-      font-size: 3.5rem;
+      font-size: 4rem;
       font-weight: 700;
       letter-spacing: -0.025em;
       position: relative;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     header p {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       margin-top: 1.5rem;
       font-weight: 500;
-      opacity: 0.9;
+      opacity: 0.95;
       position: relative;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .container {
-      padding: 4rem 2rem;
-      max-width: 800px;
+      padding: 6rem 2rem;
+      max-width: 1000px;
       margin: 0 auto;
       text-align: center;
     }
 
     .container > p {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       color: #4b5563;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
+      font-weight: 500;
     }
 
     .features {
       text-align: left;
-      margin: 3rem auto;
-      max-width: 600px;
+      margin: 4rem auto;
+      max-width: 700px;
       background: #f8fafc;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      padding: 3rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
     }
 
     .features li {
-      margin-bottom: 1.5rem;
-      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .features li:hover {
+      transform: translateX(5px);
+    }
+
+    .features li i {
+      color: #2563eb;
+      font-size: 1.5rem;
     }
 
     .features li:last-child {
@@ -92,21 +108,23 @@
 
     .signup {
       margin-top: 4rem;
-      padding: 3rem;
-      background: #f8fafc;
-      border-radius: 1rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      padding: 4rem;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
     }
 
     .signup h2 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: #1e40af;
       margin-bottom: 1rem;
+      font-weight: 700;
     }
 
     .signup p {
       color: #4b5563;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      font-size: 1.2rem;
     }
 
     .embeddable-buttondown-form {
@@ -114,40 +132,43 @@
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     .embeddable-buttondown-form input[type="email"] {
-      padding: 0.875rem 1.25rem;
+      padding: 1rem 1.5rem;
       width: 100%;
       max-width: 400px;
       border: 2px solid #e5e7eb;
-      border-radius: 0.5rem;
-      font-size: 1rem;
-      transition: all 0.2s;
+      border-radius: 0.75rem;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      background: white;
     }
 
     .embeddable-buttondown-form input[type="email"]:focus {
       outline: none;
       border-color: #3b82f6;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
     }
 
     .embeddable-buttondown-form input[type="submit"] {
-      padding: 0.875rem 2rem;
-      background-color: #2563eb;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
       color: white;
       border: none;
-      border-radius: 0.5rem;
-      font-size: 1rem;
+      border-radius: 0.75rem;
+      font-size: 1.1rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.3s ease;
       white-space: nowrap;
     }
 
     .embeddable-buttondown-form input[type="submit"]:hover {
-      background-color: #1d4ed8;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
     }
 
     .embeddable-buttondown-form input[type="submit"]:active {
@@ -156,35 +177,37 @@
 
     footer {
       text-align: center;
-      padding: 3rem 2rem;
+      padding: 4rem 2rem;
       background: #f8fafc;
       color: #6b7280;
-      font-size: 0.875rem;
+      font-size: 1rem;
+      border-top: 1px solid #e5e7eb;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       header {
-        padding: 4rem 1rem;
+        padding: 6rem 1.5rem;
       }
 
       header h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
       }
 
       header p {
-        font-size: 1.25rem;
+        font-size: 1.4rem;
       }
 
       .container {
-        padding: 2rem 1rem;
+        padding: 4rem 1.5rem;
       }
 
       .features {
-        padding: 1.5rem;
+        padding: 2rem;
+        margin: 3rem auto;
       }
 
       .signup {
-        padding: 2rem 1.5rem;
+        padding: 3rem 1.5rem;
       }
 
       .embeddable-buttondown-form {
@@ -194,6 +217,29 @@
       .embeddable-buttondown-form input[type="email"],
       .embeddable-buttondown-form input[type="submit"] {
         width: 100%;
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      header p {
+        font-size: 1.2rem;
+      }
+
+      .container > p {
+        font-size: 1.25rem;
+      }
+
+      .features li {
+        font-size: 1.1rem;
+      }
+
+      .signup h2 {
+        font-size: 2rem;
       }
     }
   </style>
@@ -206,9 +252,9 @@
   <div class="container">
     <p>Track your progress, build better habits, and share your wins.</p>
     <ul class="features">
-      <li>✅ 3 daily prompts to stay on track</li>
-      <li>✅ Focused personal growth (no overwhelm)</li>
-      <li>✅ Simple, clean, and community-driven</li>
+      <li><i class="fas fa-check-circle"></i> 3 daily prompts to stay on track</li>
+      <li><i class="fas fa-check-circle"></i> Focused personal growth (no overwhelm)</li>
+      <li><i class="fas fa-check-circle"></i> Simple, clean, and community-driven</li>
     </ul>
 
     <div class="signup">
@@ -219,7 +265,7 @@
           <input type="email" name="email" id="bd-email" placeholder="Enter your email" required>
           <input type="submit" value="Notify Me">
         </form>
-        <p id="bd-success" style="display:none; color: #059669; margin-top: 1.5em; font-weight: 500;">
+        <p id="bd-success" style="display:none; color: #059669; margin-top: 1.5em; font-weight: 500; font-size: 1.1rem;">
           🎉 Thanks! You're on the list.
         </p>
       </div>
@@ -235,7 +281,6 @@
       const email = document.getElementById('bd-email').value;
       const submitButton = this.querySelector('input[type="submit"]');
       
-      // Disable the submit button while processing
       submitButton.disabled = true;
       submitButton.value = 'Subscribing...';
 
@@ -251,13 +296,11 @@
           document.getElementById('bd-success').style.display = 'block';
         } else {
           alert("Oops! Something went wrong. Try again.");
-          // Re-enable the submit button on error
           submitButton.disabled = false;
           submitButton.value = 'Notify Me';
         }
       } catch (error) {
         alert("Oops! Something went wrong. Try again.");
-        // Re-enable the submit button on error
         submitButton.disabled = false;
         submitButton.value = 'Notify Me';
       }
