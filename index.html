@@ -285,7 +285,8 @@
       submitButton.value = 'Subscribing...';
 
       try {
-        const res = await fetch('https://buttondown.email/api/emails/embed-subscribe/daily3wins', {
+        console.log('Sending subscription request...');
+        const res = await fetch('https://buttondown.email/api/emails/embed-subscribe/daily', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -294,7 +295,9 @@
           body: `email=${encodeURIComponent(email)}&referrer_url=${encodeURIComponent(window.location.href)}`
         });
 
+        console.log('Response status:', res.status);
         const data = await res.json();
+        console.log('Response data:', data);
 
         if (res.ok) {
           document.getElementById('bd-form').style.display = 'none';
@@ -305,11 +308,11 @@
             origin: { y: 0.6 }
           });
         } else {
-          throw new Error(data.error || 'Subscription failed');
+          throw new Error(data.error || `Subscription failed: ${res.status} ${res.statusText}`);
         }
       } catch (error) {
         console.error('Subscription error:', error);
-        alert("Oops! Something went wrong. Please try again.");
+        alert(`Subscription failed: ${error.message || 'Unknown error'}`);
         submitButton.disabled = false;
         submitButton.value = 'Notify Me';
       }
