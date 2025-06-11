@@ -1,56 +1,267 @@
-<div id="waitlist">
-  <h2>Join the Waitlist</h2>
-  <p>Be the first to know when Daily 3 Wins launches!</p>
-
-  <form id="bd-form">
-    <input type="email" name="email" id="bd-email" placeholder="Enter your email" required>
-    <input type="submit" value="Notify Me">
-  </form>
-
-  <p id="bd-success" style="display:none; color: green; margin-top: 1em;">
-    🎉 Thanks! You're on the list.
-  </p>
-</div>
-
-<style>
-  #bd-form input[type="email"] {
-    padding: 0.5em;
-    width: 250px;
-    margin-right: 0.5em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-
-  #bd-form input[type="submit"] {
-    padding: 0.5em 1em;
-    background-color: #0070f3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  #bd-form input[type="submit"]:hover {
-    background-color: #0059c1;
-  }
-</style>
-
-<script>
-  document.getElementById('bd-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const email = document.getElementById('bd-email').value;
-
-    const res = await fetch('https://buttondown.email/api/emails/embed-subscribe/daily3wins', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `email=${encodeURIComponent(email)}`
-    });
-
-    if (res.ok) {
-      document.getElementById('bd-form').style.display = 'none';
-      document.getElementById('bd-success').style.display = 'block';
-    } else {
-      alert("Oops! Something went wrong. Try again.");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily 3 Wins</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-  });
-</script>
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+      color: white;
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      position: relative;
+    }
+
+    header p {
+      font-size: 1.5rem;
+      margin-top: 1.5rem;
+      font-weight: 500;
+      opacity: 0.9;
+      position: relative;
+    }
+
+    .container {
+      padding: 4rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .container > p {
+      font-size: 1.25rem;
+      color: #4b5563;
+      margin-bottom: 2rem;
+    }
+
+    .features {
+      text-align: left;
+      margin: 3rem auto;
+      max-width: 600px;
+      background: #f8fafc;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .features li {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .features li:last-child {
+      margin-bottom: 0;
+    }
+
+    .signup {
+      margin-top: 4rem;
+      padding: 3rem;
+      background: #f8fafc;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .signup h2 {
+      font-size: 2rem;
+      color: #1e40af;
+      margin-bottom: 1rem;
+    }
+
+    .signup p {
+      color: #4b5563;
+      margin-bottom: 2rem;
+    }
+
+    .embeddable-buttondown-form {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .embeddable-buttondown-form input[type="email"] {
+      padding: 0.875rem 1.25rem;
+      width: 100%;
+      max-width: 400px;
+      border: 2px solid #e5e7eb;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+
+    .embeddable-buttondown-form input[type="email"]:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .embeddable-buttondown-form input[type="submit"] {
+      padding: 0.875rem 2rem;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .embeddable-buttondown-form input[type="submit"]:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .embeddable-buttondown-form input[type="submit"]:active {
+      transform: translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: #f8fafc;
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding: 4rem 1rem;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      header p {
+        font-size: 1.25rem;
+      }
+
+      .container {
+        padding: 2rem 1rem;
+      }
+
+      .features {
+        padding: 1.5rem;
+      }
+
+      .signup {
+        padding: 2rem 1.5rem;
+      }
+
+      .embeddable-buttondown-form {
+        flex-direction: column;
+      }
+
+      .embeddable-buttondown-form input[type="email"],
+      .embeddable-buttondown-form input[type="submit"] {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Daily 3 Wins</h1>
+    <p>Win the day — one Physical, Mental, and Spiritual habit at a time.</p>
+  </header>
+  <div class="container">
+    <p>Track your progress, build better habits, and share your wins.</p>
+    <ul class="features">
+      <li>✅ 3 daily prompts to stay on track</li>
+      <li>✅ Focused personal growth (no overwhelm)</li>
+      <li>✅ Simple, clean, and community-driven</li>
+    </ul>
+
+    <div class="signup">
+      <h2>Join the Waitlist</h2>
+      <p>Be the first to know when Daily 3 Wins launches!</p>
+      <div id="waitlist">
+        <form id="bd-form" class="embeddable-buttondown-form" onsubmit="return false;">
+          <input type="email" name="email" id="bd-email" placeholder="Enter your email" required>
+          <input type="submit" value="Notify Me">
+        </form>
+        <p id="bd-success" style="display:none; color: #059669; margin-top: 1.5em; font-weight: 500;">
+          🎉 Thanks! You're on the list.
+        </p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    &copy; 2025 Daily3Wins. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('bd-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('bd-email').value;
+      const submitButton = this.querySelector('input[type="submit"]');
+      
+      // Disable the submit button while processing
+      submitButton.disabled = true;
+      submitButton.value = 'Subscribing...';
+
+      try {
+        const res = await fetch('https://buttondown.email/api/emails/embed-subscribe/daily3wins', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: `email=${encodeURIComponent(email)}`
+        });
+
+        if (res.ok) {
+          document.getElementById('bd-form').style.display = 'none';
+          document.getElementById('bd-success').style.display = 'block';
+        } else {
+          alert("Oops! Something went wrong. Try again.");
+          // Re-enable the submit button on error
+          submitButton.disabled = false;
+          submitButton.value = 'Notify Me';
+        }
+      } catch (error) {
+        alert("Oops! Something went wrong. Try again.");
+        // Re-enable the submit button on error
+        submitButton.disabled = false;
+        submitButton.value = 'Notify Me';
+      }
+    });
+  </script>
+</body>
+</html> 
