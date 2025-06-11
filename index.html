@@ -261,13 +261,14 @@
       <h2>Join the Waitlist</h2>
       <p>Be the first to know when Daily 3 Wins launches!</p>
       <div id="waitlist">
-        <form id="bd-form" class="embeddable-buttondown-form" onsubmit="return false;">
+        <form action="https://buttondown.email/api/emails/embed-subscribe/daily3wins"
+              method="post"
+              target="popupwindow"
+              onsubmit="window.open('https://buttondown.email/daily3wins', 'popupwindow')"
+              class="embeddable-buttondown-form">
           <input type="email" name="email" id="bd-email" placeholder="Enter your email" required>
           <input type="submit" value="Notify Me">
         </form>
-        <p id="bd-success" style="display:none; color: #059669; margin-top: 1.5em; font-weight: 500;">
-          🎉 Thanks! You're on the list.
-        </p>
       </div>
     </div>
   </div>
