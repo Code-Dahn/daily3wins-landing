@@ -60,6 +60,105 @@
       margin-right: auto;
     }
 
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+      padding: 1rem 2rem;
+      background: white;
+      color: #1e40af;
+      text-decoration: none;
+      font-size: 1.25rem;
+      font-weight: 600;
+      border-radius: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .cta-button:active {
+      transform: translateY(0);
+    }
+
+    .cta-button i {
+      font-size: 1.1em;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 6rem 1.5rem;
+      }
+
+      header h1 {
+        font-size: 3rem;
+      }
+
+      header p {
+        font-size: 1.4rem;
+      }
+
+      .container {
+        padding: 4rem 1.5rem;
+      }
+
+      .features {
+        padding: 2rem;
+        margin: 3rem auto;
+      }
+
+      .signup {
+        padding: 3rem 1.5rem;
+      }
+
+      .embeddable-buttondown-form {
+        flex-direction: column;
+      }
+
+      .embeddable-buttondown-form input[type="email"],
+      .embeddable-buttondown-form input[type="submit"] {
+        width: 100%;
+        max-width: none;
+      }
+
+      .cta-button {
+        font-size: 1.1rem;
+        padding: 0.875rem 1.75rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      header p {
+        font-size: 1.2rem;
+      }
+
+      .container > p {
+        font-size: 1.25rem;
+      }
+
+      .features li {
+        font-size: 1.1rem;
+      }
+
+      .signup h2 {
+        font-size: 2rem;
+      }
+
+      .cta-button {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+      }
+    }
+
     .container {
       padding: 6rem 2rem;
       max-width: 1000px;
@@ -183,71 +282,16 @@
       font-size: 1rem;
       border-top: 1px solid #e5e7eb;
     }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 6rem 1.5rem;
-      }
-
-      header h1 {
-        font-size: 3rem;
-      }
-
-      header p {
-        font-size: 1.4rem;
-      }
-
-      .container {
-        padding: 4rem 1.5rem;
-      }
-
-      .features {
-        padding: 2rem;
-        margin: 3rem auto;
-      }
-
-      .signup {
-        padding: 3rem 1.5rem;
-      }
-
-      .embeddable-buttondown-form {
-        flex-direction: column;
-      }
-
-      .embeddable-buttondown-form input[type="email"],
-      .embeddable-buttondown-form input[type="submit"] {
-        width: 100%;
-        max-width: none;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 2.5rem;
-      }
-
-      header p {
-        font-size: 1.2rem;
-      }
-
-      .container > p {
-        font-size: 1.25rem;
-      }
-
-      .features li {
-        font-size: 1.1rem;
-      }
-
-      .signup h2 {
-        font-size: 2rem;
-      }
-    }
   </style>
 </head>
 <body>
   <header>
     <h1>Daily 3 Wins</h1>
     <p>Win the day — one Physical, Mental, and Spiritual habit at a time.</p>
+    <a href="../app-prototype/index.html" class="cta-button">
+      <i class="fas fa-rocket"></i>
+      Launch App
+    </a>
   </header>
   <div class="container">
     <p>Track your progress, build better habits, and share your wins.</p>
